@@ -5,6 +5,8 @@
  */
 package Principal;
 
+import View.Principal;
+
 /**
  *
  * @author André Teixeira
@@ -15,7 +17,8 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Principal frame = new Principal();
+        frame.setVisible(true);
     }
     
 }
