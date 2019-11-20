@@ -81,12 +81,14 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="vlr_codigo" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                  <Component id="bt_pesquisa" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="bt_voltar" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                  <Component id="bt_avanca" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="txt_codigo" alignment="0" min="-2" pref="23" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="vlr_codigo" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                      <Component id="bt_pesquisa" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="bt_voltar" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                      <Component id="bt_avanca" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -136,21 +138,33 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="&lt;&lt;"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bt_primeiroMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bt_voltar">
       <Properties>
         <Property name="text" type="java.lang.String" value="&lt;"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bt_voltarMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bt_avanca">
       <Properties>
         <Property name="text" type="java.lang.String" value="&gt;"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bt_avancaMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bt_ultimo">
       <Properties>
         <Property name="text" type="java.lang.String" value="&gt;&gt;"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bt_ultimoMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="txt_nome">
       <Properties>
@@ -192,6 +206,7 @@
     <Component class="javax.swing.JButton" name="bt_salvar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Salvar"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bt_salvarMouseClicked"/>
@@ -200,6 +215,7 @@
     <Component class="javax.swing.JButton" name="bt_cancelar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cancelar"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bt_cancelarMouseClicked"/>
@@ -208,12 +224,19 @@
     <Component class="javax.swing.JButton" name="bt_excluir">
       <Properties>
         <Property name="text" type="java.lang.String" value="Excluir"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bt_excluirMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bt_editar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Editar"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bt_editarMouseClicked"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

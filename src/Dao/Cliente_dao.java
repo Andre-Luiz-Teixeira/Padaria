@@ -44,6 +44,7 @@ public class Cliente_dao {
             pst = conexao.prepareStatement(sql);
             pst.setString(1, Cliente.getNome());
             pst.setString(2, Cliente.getSexo());
+            pst.setInt(3, Cliente.getId());
 
             pst.executeUpdate();
         } catch (SQLException ex) {
@@ -73,6 +74,7 @@ public class Cliente_dao {
             pst.setInt(1, Id);
 
             ResultSet resultado = pst.executeQuery();
+            resultado.next();
 
             cliente.setId(resultado.getInt("cliente_id"));
             cliente.setNome(resultado.getString("cliente_nome"));
@@ -116,7 +118,28 @@ public class Cliente_dao {
         try {
             pst = conexao.prepareStatement(sql);
             ResultSet Resultado = pst.executeQuery();
+            Resultado.next();
+            
+            cliente.setId(Resultado.getInt("cliente_id"));
+            cliente.setNome(Resultado.getString("cliente_nome"));
+            cliente.setSexo(Resultado.getString("cliente_sexo"));
 
+        } catch (SQLException ex) {
+            System.err.println("Erro ão recupera objeto do banco: " + ex.getMessage());
+        }
+
+        return cliente;
+    }
+    
+    public Cliente_mdl primeiro() {
+        Cliente_mdl cliente = new Cliente_mdl();
+        sql = "select cliente_id, cliente_nome, cliente_sexo from cliente where cliente_id = (select  MIN(cliente_id) as cliente_id from cliente)";
+
+        try {
+            pst = conexao.prepareStatement(sql);
+            ResultSet Resultado = pst.executeQuery();
+            Resultado.next();
+            
             cliente.setId(Resultado.getInt("cliente_id"));
             cliente.setNome(Resultado.getString("cliente_nome"));
             cliente.setSexo(Resultado.getString("cliente_sexo"));

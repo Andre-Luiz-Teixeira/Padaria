@@ -14,6 +14,7 @@ import java.util.ArrayList;
  * @author André Teixeira
  */
 public class Cliente_ctrl {
+
     Cliente_mdl Model = new Cliente_mdl();
     Cliente_dao Dao = new Cliente_dao();
     String[] vetorCliente = new String[3];
@@ -33,7 +34,7 @@ public class Cliente_ctrl {
 
     public String[] recuperar(int id) {
         Model = Dao.selecionar(id);
-        
+
         vetorCliente[0] = String.valueOf(Model.getId());
         vetorCliente[1] = Model.getNome();
         vetorCliente[2] = Model.getSexo();
@@ -43,6 +44,16 @@ public class Cliente_ctrl {
 
     public String[] recuperaUltimo() {
         Model = Dao.ultimo();
+
+        vetorCliente[0] = String.valueOf(Model.getId());
+        vetorCliente[1] = Model.getNome();
+        vetorCliente[2] = Model.getSexo();
+
+        return vetorCliente;
+    }
+
+    public String[] recuperaPrimeiro() {
+        Model = Dao.primeiro();
 
         vetorCliente[0] = String.valueOf(Model.getId());
         vetorCliente[1] = Model.getNome();

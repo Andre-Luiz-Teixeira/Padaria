@@ -6,6 +6,7 @@
 package View;
 
 import Control.Cliente_ctrl;
+import java.awt.Color;
 
 /**
  *
@@ -62,12 +63,32 @@ public class Cliente_view extends javax.swing.JFrame {
         bt_pesquisa.setText("?");
 
         bt_primeiro.setText("<<");
+        bt_primeiro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_primeiroMouseClicked(evt);
+            }
+        });
 
         bt_voltar.setText("<");
+        bt_voltar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_voltarMouseClicked(evt);
+            }
+        });
 
         bt_avanca.setText(">");
+        bt_avanca.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_avancaMouseClicked(evt);
+            }
+        });
 
         bt_ultimo.setText(">>");
+        bt_ultimo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_ultimoMouseClicked(evt);
+            }
+        });
 
         txt_nome.setText("Nome");
 
@@ -86,6 +107,7 @@ public class Cliente_view extends javax.swing.JFrame {
         });
 
         bt_salvar.setText("Salvar");
+        bt_salvar.setEnabled(false);
         bt_salvar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 bt_salvarMouseClicked(evt);
@@ -93,6 +115,7 @@ public class Cliente_view extends javax.swing.JFrame {
         });
 
         bt_cancelar.setText("Cancelar");
+        bt_cancelar.setEnabled(false);
         bt_cancelar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 bt_cancelarMouseClicked(evt);
@@ -100,8 +123,19 @@ public class Cliente_view extends javax.swing.JFrame {
         });
 
         bt_excluir.setText("Excluir");
+        bt_excluir.setEnabled(false);
+        bt_excluir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_excluirMouseClicked(evt);
+            }
+        });
 
         bt_editar.setText("Editar");
+        bt_editar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_editarMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -151,12 +185,13 @@ public class Cliente_view extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(vlr_codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bt_pesquisa)
-                    .addComponent(bt_voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bt_avanca, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txt_codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(vlr_codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(bt_pesquisa)
+                        .addComponent(bt_voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(bt_avanca, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -185,19 +220,17 @@ public class Cliente_view extends javax.swing.JFrame {
 
     private void vlr_codigoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_vlr_codigoFocusLost
         if (!vlr_codigo.getText().equals("")) {
-            String[] resultado = new String[3];
+            String[] resultado;
             resultado = controle.recuperar(Integer.parseInt(vlr_codigo.getText()));
+
+            vlr_codigo.setText(String.valueOf(resultado[0]));
             vlr_nome.setText(resultado[1]);
             cb_sexo.setSelectedItem(resultado[2]);
-        } else {
-            vlr_codigo.setText("0");
         }
     }//GEN-LAST:event_vlr_codigoFocusLost
 
     private void bt_novoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_novoMouseClicked
-        vlr_codigo.setText("0");
-        vlr_nome.setText("");
-        cb_sexo.setSelectedIndex(-1);
+        limpaTela();
         vlr_nome.requestFocus();
         ativa(true);
     }//GEN-LAST:event_bt_novoMouseClicked
@@ -209,25 +242,91 @@ public class Cliente_view extends javax.swing.JFrame {
         Cliente[2] = (String) cb_sexo.getSelectedItem();
 
         controle.salvar(Cliente);
+        
+        limpaTela();
+        ativa(false);
     }//GEN-LAST:event_bt_salvarMouseClicked
 
     private void bt_cancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_cancelarMouseClicked
-        // TODO add your handling code here:
+        limpaTela();
+        ativa(false);
     }//GEN-LAST:event_bt_cancelarMouseClicked
+
+    private void bt_voltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_voltarMouseClicked
+        int cod = Integer.parseInt(vlr_codigo.getText()) - 1;
+        if (cod >= 1) {
+            vlr_codigo.setText(String.valueOf(cod));
+            vlr_codigo.requestFocus();
+            bt_voltar.requestFocus();
+        }
+    }//GEN-LAST:event_bt_voltarMouseClicked
+
+    private void bt_avancaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_avancaMouseClicked
+        int cod = Integer.parseInt(vlr_codigo.getText()) + 1;
+        if (cod >= 1) {
+            vlr_codigo.setText(String.valueOf(cod));
+            vlr_codigo.requestFocus();
+            bt_voltar.requestFocus();
+        }
+    }//GEN-LAST:event_bt_avancaMouseClicked
+
+    private void bt_ultimoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_ultimoMouseClicked
+        String[] cliente = controle.recuperaUltimo();
+
+        vlr_codigo.setText(cliente[0]);
+        vlr_nome.setText(cliente[1]);
+        cb_sexo.setSelectedItem(cliente[2]);
+    }//GEN-LAST:event_bt_ultimoMouseClicked
+
+    private void bt_primeiroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_primeiroMouseClicked
+        String[] cliente = controle.recuperaPrimeiro();
+
+        vlr_codigo.setText(cliente[0]);
+        vlr_nome.setText(cliente[1]);
+        cb_sexo.setSelectedItem(cliente[2]);
+    }//GEN-LAST:event_bt_primeiroMouseClicked
+
+    private void bt_editarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_editarMouseClicked
+        String cod = vlr_codigo.getText();
+        
+        if ( !cod.equals("0") && !cod.equals("")) {
+            ativa(true);
+        }
+    }//GEN-LAST:event_bt_editarMouseClicked
+
+    private void bt_excluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_excluirMouseClicked
+        String cod = vlr_codigo.getText();
+        if ( !cod.equals("0") && !cod.equals("")) {
+            controle.excluir(Integer.parseInt(cod));
+            ativa(false);
+            limpaTela();
+        }
+    }//GEN-LAST:event_bt_excluirMouseClicked
 
     public void ativa(boolean ativo) {
         vlr_codigo.setEnabled(!ativo);
         vlr_nome.setEnabled(ativo);
         cb_sexo.setEnabled(ativo);
-        
+
+        bt_pesquisa.setEnabled(!ativo);
+
         bt_primeiro.setEnabled(!ativo);
         bt_ultimo.setEnabled(!ativo);
         bt_voltar.setEnabled(!ativo);
         bt_avanca.setEnabled(!ativo);
-        
+
         bt_editar.setEnabled(!ativo);
         bt_novo.setEnabled(!ativo);
-        bt_excluir.setEnabled(!ativo);
+
+        bt_excluir.setEnabled(ativo);
+        bt_salvar.setEnabled(ativo);
+        bt_cancelar.setEnabled(ativo);
+    }
+    
+    public void limpaTela(){
+        vlr_codigo.setText("");
+        vlr_nome.setText("");
+        cb_sexo.setSelectedIndex(-1);
     }
 
     /**
