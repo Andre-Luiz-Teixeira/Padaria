@@ -5,7 +5,7 @@
  */
 package Principal;
 
-import View.Principal;
+import View.*;
 
 /**
  *

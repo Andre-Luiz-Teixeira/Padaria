@@ -78,4 +78,17 @@ public class Cliente_ctrl {
     public void excluir(int id) {
         Dao.remove(id);
     }
+    
+    public String[][] recuperarTodos(String campo, String pesquisa) {
+        ListaCliente = Dao.tudo(campo, pesquisa);
+
+        String[][] matriz = new String[ListaCliente.size()][3];
+
+        for (int i = 0; i < ListaCliente.size(); i++) {
+            matriz[i][0] = String.valueOf(ListaCliente.get(i).getId());
+            matriz[i][1] = ListaCliente.get(i).getNome();
+            matriz[i][2] = ListaCliente.get(i).getSexo();
+        }
+        return matriz;
+    }
 }

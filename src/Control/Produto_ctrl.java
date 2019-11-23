@@ -70,4 +70,12 @@ public class Produto_ctrl {
     public void excluir(int id) {
         Dao.remove(id);
     }
+    
+    public String[] recuperaPrimeiro(){
+        return null;
+    }
+    
+    public String[] recuperaUltimo(){
+        return null;
+    }
 }

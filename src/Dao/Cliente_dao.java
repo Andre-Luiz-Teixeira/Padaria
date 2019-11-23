@@ -67,7 +67,7 @@ public class Cliente_dao {
 
     public Cliente_mdl selecionar(int Id) {
         Cliente_mdl cliente = new Cliente_mdl();
-        sql = "select * from cliente where cliente_id = ?";
+        sql = "select cliente_id, cliente_nome, cliente_sexo from cliente where cliente_id = ?";
 
         try {
             pst = conexao.prepareStatement(sql);
@@ -89,7 +89,7 @@ public class Cliente_dao {
 
     public ArrayList<Cliente_mdl> tudo() {
         ArrayList<Cliente_mdl> ListaCliente = new ArrayList<>();
-        sql = "select * from cliente";
+        sql = "select cliente_id, cliente_nome, cliente_sexo from cliente";
 
         try {
             pst = conexao.prepareStatement(sql);
@@ -101,6 +101,46 @@ public class Cliente_dao {
                 cliente.setId(Resultado.getInt("id"));
                 cliente.setNome(Resultado.getString("nome"));
                 cliente.setSexo(Resultado.getString("sexo"));
+
+                ListaCliente.add(cliente);
+            }
+        } catch (SQLException ex) {
+            System.err.println("Erro ao recupera todos objeto do banco: " + ex.getMessage());;
+        }
+
+        return ListaCliente;
+    }
+    
+    public ArrayList<Cliente_mdl> tudo(String campo, String pesquisa) {
+        ArrayList<Cliente_mdl> ListaCliente = new ArrayList<>();
+        
+        switch (campo) {
+            case "0":
+                sql = "select cliente_id, cliente_nome, cliente_sexo from cliente where cliente_id like ?";
+                break;
+            case "1":
+                sql = "select cliente_id, cliente_nome, cliente_sexo from cliente where cliente_nome like ?";
+                break;
+            case "2":
+                sql = "select cliente_id, cliente_nome,  from cliente where cliente_sexo like ?";
+                break;
+        }
+        
+        
+        
+        try {
+            pst = conexao.prepareStatement(sql);
+            
+            pst.setString(1, pesquisa);
+            
+            ResultSet Resultado = pst.executeQuery();
+            
+            while (Resultado.next()){
+                Cliente_mdl cliente = new Cliente_mdl();
+
+                cliente.setId(Resultado.getInt("cliente_id"));
+                cliente.setNome(Resultado.getString("cliente_nome"));
+                cliente.setSexo(Resultado.getString("cliente_sexo"));
 
                 ListaCliente.add(cliente);
             }

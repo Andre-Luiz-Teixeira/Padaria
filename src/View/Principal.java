@@ -33,6 +33,7 @@ public class Principal extends javax.swing.JFrame {
         vendedor = new javax.swing.JMenuItem();
         produto = new javax.swing.JMenuItem();
         menu_venda = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Padaria");
@@ -65,7 +66,16 @@ public class Principal extends javax.swing.JFrame {
 
         Menu.add(menu_cadastro);
 
-        menu_venda.setText("Vendas");
+        menu_venda.setText("Pedidos");
+
+        jMenuItem1.setText("Venda");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        menu_venda.add(jMenuItem1);
+
         Menu.add(menu_venda);
 
         setJMenuBar(Menu);
@@ -99,6 +109,11 @@ public class Principal extends javax.swing.JFrame {
         Produto_view frame = new Produto_view();
         frame.setVisible(true);
     }//GEN-LAST:event_produtoActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        Pedido_view frame = new Pedido_view();
+        frame.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -139,6 +154,7 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar Menu;
     private javax.swing.JMenuItem cliente;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenu menu_cadastro;
     private javax.swing.JMenu menu_venda;
     private javax.swing.JMenuItem produto;
