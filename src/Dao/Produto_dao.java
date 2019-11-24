@@ -17,6 +17,7 @@ import java.util.ArrayList;
  * @author André Teixeira
  */
 public class Produto_dao {
+
     // variaveis usadas em todas as clases
     Connection conexao = FabricaConexao.GeraConexao(); // Gera conexao com o banco
     String sql = "";// recebe o comando no sql
@@ -77,6 +78,7 @@ public class Produto_dao {
             pst.setInt(1, Id);
 
             ResultSet Resultado = pst.executeQuery();
+            Resultado.next();
 
             produto.setId(Resultado.getInt("produto_id"));
             produto.setNome(Resultado.getString("produto_nome"));
@@ -114,23 +116,84 @@ public class Produto_dao {
         return ListaProduto;
     }
 
-    public Produto_mdl ultimo() {
-            Produto_mdl produto = new Produto_mdl();
-        sql = "select produto_id, produto_nome, produto_preco, produto_unidade from produto where produto_id = (select  MAX(produto_id) from produto) ";
-        
+    public ArrayList<Produto_mdl> tudo(String campo, String pesquisa) {
+        ArrayList<Produto_mdl> ListaProduto = new ArrayList<>();
+
+        switch (campo) {
+            case "0":
+                sql = "select produto_id, produto_nome, produto_preco, produto_unidade from produto where produto_id like ?";
+                break;
+            case "1":
+                sql = "select produto_id, produto_nome, produto_preco, produto_unidade from produto where produto_nome like ?";
+                break;
+            case "2":
+                sql = "select produto_id, produto_nome, produto_preco, produto_unidade from produto where produto_preco like ?";
+                break;
+            case "3":
+                sql = "select produto_id, produto_nome, produto_preco, produto_unidade from produto where produto_unidade like ?";
+                break;
+        }
+
         try {
             pst = conexao.prepareStatement(sql);
+            pst.setString(1, pesquisa);
             ResultSet Resultado = pst.executeQuery();
 
-            if (Resultado.next()) {
+            while (Resultado.next()) {
+                Produto_mdl produto = new Produto_mdl();
+
                 produto.setId(Resultado.getInt("produto_id"));
                 produto.setNome(Resultado.getString("produto_nome"));
                 produto.setPreco(Resultado.getDouble("produto_preco"));
                 produto.setUnidade(Resultado.getString("produto_unidade"));
+
+                ListaProduto.add(produto);
             }
+        } catch (SQLException ex) {
+            System.err.println("Erro ao recupera todos objeto do banco: " + ex.getMessage());;
+        }
+
+        return ListaProduto;
+    }
+
+    public Produto_mdl ultimo() {
+        Produto_mdl produto = new Produto_mdl();
+        sql = "select produto_id, produto_nome, produto_preco, produto_unidade from produto where produto_id = (select  MAX(produto_id) from produto) ";
+
+        try {
+            pst = conexao.prepareStatement(sql);
+            ResultSet Resultado = pst.executeQuery();
+            Resultado.next();
+
+            produto.setId(Resultado.getInt("produto_id"));
+            produto.setNome(Resultado.getString("produto_nome"));
+            produto.setPreco(Resultado.getDouble("produto_preco"));
+            produto.setUnidade(Resultado.getString("produto_unidade"));
+
         } catch (SQLException ex) {
             System.err.println("Erro ão recupera objeto do banco: " + ex.getMessage());
         }
-        return null;
+        return produto;
+    }
+
+    public Produto_mdl primeiro() {
+        Produto_mdl produto = new Produto_mdl();
+        sql = "select produto_id, produto_nome, produto_preco, produto_unidade from produto where produto_id = (select  MIN(produto_id) from produto) ";
+
+        try {
+            pst = conexao.prepareStatement(sql);
+            ResultSet Resultado = pst.executeQuery();
+            Resultado.next();
+
+            produto.setId(Resultado.getInt("produto_id"));
+            produto.setNome(Resultado.getString("produto_nome"));
+            produto.setPreco(Resultado.getDouble("produto_preco"));
+            produto.setUnidade(Resultado.getString("produto_unidade"));
+
+        } catch (SQLException ex) {
+            System.err.println("Erro ão recupera objeto do banco: " + ex.getMessage());
+        }
+
+        return produto;
     }
 }

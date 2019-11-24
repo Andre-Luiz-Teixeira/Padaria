@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class Produto_ctrl {
     Produto_mdl Model = new Produto_mdl();
     Produto_dao Dao = new Produto_dao();
-    String[] vetorProduto = new String[3];
+    String[] vetorProduto = new String[4];
     ArrayList<Produto_mdl> ListaProduto = new ArrayList<>();
 
     public void salvar(String[] dados) {
@@ -66,16 +66,44 @@ public class Produto_ctrl {
         }
         return matriz;
     }
+    
+    public String[][] recuperarTodos(String campo, String pesquisa) {
+        ListaProduto = Dao.tudo(campo, pesquisa);
+
+        String[][] matriz = new String[ListaProduto.size()][4];
+
+        for (int i = 0; i < ListaProduto.size(); i++) {
+            matriz[i][0] = String.valueOf(ListaProduto.get(i).getId());
+            matriz[i][1] = ListaProduto.get(i).getNome();
+            matriz[i][2] = String.valueOf(ListaProduto.get(i).getPreco());
+            matriz[i][3] = ListaProduto.get(i).getUnidade();
+        }
+        return matriz;
+    }
 
     public void excluir(int id) {
         Dao.remove(id);
     }
     
-    public String[] recuperaPrimeiro(){
-        return null;
+    public String[] recuperaUltimo() {
+        Model = Dao.ultimo();
+
+        vetorProduto[0] = String.valueOf(Model.getId());
+        vetorProduto[1] = Model.getNome();
+        vetorProduto[2] = String.valueOf(Model.getPreco());
+        vetorProduto[3] = Model.getUnidade();
+
+        return vetorProduto;
     }
-    
-    public String[] recuperaUltimo(){
-        return null;
+
+    public String[] recuperaPrimeiro() {
+        Model = Dao.primeiro();
+
+        vetorProduto[0] = String.valueOf(Model.getId());
+        vetorProduto[1] = Model.getNome();
+        vetorProduto[2] = String.valueOf(Model.getPreco());
+        vetorProduto[3] = Model.getUnidade();
+
+        return vetorProduto;
     }
 }

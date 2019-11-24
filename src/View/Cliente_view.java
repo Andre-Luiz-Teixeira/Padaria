@@ -323,7 +323,7 @@ public class Cliente_view extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_excluirMouseClicked
 
     private void bt_pesquisaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_pesquisaMouseClicked
-        Pesquisa_Cliente_View frame = new Pesquisa_Cliente_View();
+        Cliente_Pesquisa_View frame = new Cliente_Pesquisa_View();
         frame.setVisible(true);
     }//GEN-LAST:event_bt_pesquisaMouseClicked
 

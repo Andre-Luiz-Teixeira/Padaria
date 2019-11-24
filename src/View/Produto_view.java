@@ -12,7 +12,9 @@ import Control.Produto_ctrl;
  * @author André Teixeira
  */
 public class Produto_view extends javax.swing.JFrame {
+
     Produto_ctrl controle = new Produto_ctrl();
+
     /**
      * Creates new form Produto_view
      */
@@ -30,6 +32,7 @@ public class Produto_view extends javax.swing.JFrame {
     private void initComponents() {
 
         txt_codigo = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         vlr_codigo = new javax.swing.JTextField();
         bt_pesquisa = new javax.swing.JButton();
         bt_voltar = new javax.swing.JButton();
@@ -47,12 +50,13 @@ public class Produto_view extends javax.swing.JFrame {
         vlr_unidade = new javax.swing.JTextField();
         txt_preco = new javax.swing.JLabel();
         vlr_preco = new javax.swing.JTextField();
-        cb_sexo = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro Produto");
 
         txt_codigo.setText("Codigo");
+
+        jButton1.setText("Pesquisar");
 
         vlr_codigo.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -61,6 +65,11 @@ public class Produto_view extends javax.swing.JFrame {
         });
 
         bt_pesquisa.setText("?");
+        bt_pesquisa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_pesquisaMouseClicked(evt);
+            }
+        });
 
         bt_voltar.setText("<");
         bt_voltar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -140,8 +149,6 @@ public class Produto_view extends javax.swing.JFrame {
 
         vlr_preco.setEnabled(false);
 
-        cb_sexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -151,32 +158,32 @@ public class Produto_view extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(txt_unidade)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(vlr_unidade, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(vlr_preco, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txt_preco))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txt_unidade)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(vlr_unidade, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txt_preco)
+                                .addGap(16, 16, 16)
+                                .addComponent(vlr_preco, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(bt_editar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(bt_novo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_nome))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(txt_codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(vlr_codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(vlr_codigo))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(bt_pesquisa))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txt_nome)
-                                .addGap(68, 68, 68)
-                                .addComponent(cb_sexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(vlr_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(vlr_nome))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -190,7 +197,7 @@ public class Produto_view extends javax.swing.JFrame {
                         .addComponent(bt_cancelar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(bt_salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(bt_excluir, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,29 +207,28 @@ public class Produto_view extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(vlr_codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(bt_pesquisa)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cb_sexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(vlr_codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(vlr_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bt_salvar)))
+                        .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(bt_voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bt_avanca, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(bt_avanca, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bt_pesquisa))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(bt_primeiro)
                             .addComponent(bt_ultimo, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bt_salvar, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(vlr_nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(bt_cancelar)
+                        .addComponent(bt_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(bt_excluir))
                     .addGroup(layout.createSequentialGroup()
@@ -244,12 +250,11 @@ public class Produto_view extends javax.swing.JFrame {
 
     private void vlr_codigoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_vlr_codigoFocusLost
         if (!vlr_codigo.getText().equals("")) {
-            String[] resultado;
-            resultado = controle.recuperar(Integer.parseInt(vlr_codigo.getText()));
+            String[] Produto = controle.recuperar(Integer.parseInt(vlr_codigo.getText()));
 
-            vlr_codigo.setText(String.valueOf(resultado[0]));
-            vlr_nome.setText(resultado[1]);
-            cb_sexo.setSelectedItem(resultado[2]);
+            vlr_nome.setText(Produto[1]);
+            vlr_preco.setText(Produto[2]);
+            vlr_unidade.setText(Produto[3]);
         }
     }//GEN-LAST:event_vlr_codigoFocusLost
 
@@ -263,15 +268,17 @@ public class Produto_view extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_voltarMouseClicked
 
     private void bt_primeiroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_primeiroMouseClicked
-        String[] cliente = controle.recuperaPrimeiro();
+        String[] Produto = controle.recuperaPrimeiro();
 
-        vlr_codigo.setText(cliente[0]);
-        vlr_nome.setText(cliente[1]);
-        cb_sexo.setSelectedItem(cliente[2]);
+        vlr_codigo.setText(Produto[0]);
+        vlr_nome.setText(Produto[1]);
+        vlr_preco.setText(Produto[2]);
+        vlr_unidade.setText(Produto[3]);
     }//GEN-LAST:event_bt_primeiroMouseClicked
 
     private void bt_avancaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_avancaMouseClicked
         int cod = Integer.parseInt(vlr_codigo.getText()) + 1;
+        
         if (cod >= 1) {
             vlr_codigo.setText(String.valueOf(cod));
             vlr_codigo.requestFocus();
@@ -280,17 +287,18 @@ public class Produto_view extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_avancaMouseClicked
 
     private void bt_ultimoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_ultimoMouseClicked
-        String[] cliente = controle.recuperaUltimo();
+        String[] Produto = controle.recuperaUltimo();
 
-        vlr_codigo.setText(cliente[0]);
-        vlr_nome.setText(cliente[1]);
-        cb_sexo.setSelectedItem(cliente[2]);
+        vlr_codigo.setText(Produto[0]);
+        vlr_nome.setText(Produto[1]);
+        vlr_preco.setText(Produto[2]);
+        vlr_unidade.setText(Produto[3]);
     }//GEN-LAST:event_bt_ultimoMouseClicked
 
     private void bt_editarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_editarMouseClicked
         String cod = vlr_codigo.getText();
 
-        if ( !cod.equals("0") && !cod.equals("")) {
+        if (!cod.equals("0") && !cod.equals("")) {
             ativa(true);
         }
     }//GEN-LAST:event_bt_editarMouseClicked
@@ -302,14 +310,16 @@ public class Produto_view extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_novoMouseClicked
 
     private void bt_salvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_salvarMouseClicked
-        String[] Cliente = new String[3];
-        Cliente[0] = vlr_codigo.getText();
-        Cliente[1] = vlr_nome.getText();
-        Cliente[2] = (String) cb_sexo.getSelectedItem();
+        String[] Produto = new String[4];
+        
+        Produto[0] = vlr_codigo.getText();
+        Produto[1] = vlr_nome.getText();
+        Produto[2] = vlr_preco.getText();
+        Produto[3] = vlr_unidade.getText();
 
-        controle.salvar(Cliente);
+        controle.salvar(Produto);
 
-        limpaTela(); 
+        limpaTela();
         ativa(false);
     }//GEN-LAST:event_bt_salvarMouseClicked
 
@@ -320,17 +330,23 @@ public class Produto_view extends javax.swing.JFrame {
 
     private void bt_excluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_excluirMouseClicked
         String cod = vlr_codigo.getText();
-        if ( !cod.equals("0") && !cod.equals("")) {
+        if (!cod.equals("0") && !cod.equals("")) {
             controle.excluir(Integer.parseInt(cod));
             ativa(false);
             limpaTela();
         }
     }//GEN-LAST:event_bt_excluirMouseClicked
 
-        public void ativa(boolean ativo) {
+    private void bt_pesquisaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_pesquisaMouseClicked
+        Produto_Pesquisa_View frame = new Produto_Pesquisa_View();
+        frame.setVisible(true);
+    }//GEN-LAST:event_bt_pesquisaMouseClicked
+
+    public void ativa(boolean ativo) {
         vlr_codigo.setEnabled(!ativo);
         vlr_nome.setEnabled(ativo);
-        cb_sexo.setEnabled(ativo);
+        vlr_preco.setEnabled(ativo);
+        vlr_unidade.setEnabled(ativo);
 
         bt_pesquisa.setEnabled(!ativo);
 
@@ -346,14 +362,14 @@ public class Produto_view extends javax.swing.JFrame {
         bt_salvar.setEnabled(ativo);
         bt_cancelar.setEnabled(ativo);
     }
-    
-    public void limpaTela(){
-        vlr_codigo.setText("");
+
+    public void limpaTela() {
+        vlr_codigo.setText("0");
         vlr_nome.setText("");
-        cb_sexo.setSelectedIndex(-1);
+        vlr_preco.setText("");
+        vlr_unidade.setText("");
     }
-    
-    
+
     /**
      * @param args the command line arguments
      */
@@ -400,7 +416,7 @@ public class Produto_view extends javax.swing.JFrame {
     private javax.swing.JButton bt_salvar;
     private javax.swing.JButton bt_ultimo;
     private javax.swing.JButton bt_voltar;
-    private javax.swing.JComboBox<String> cb_sexo;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel txt_codigo;
     private javax.swing.JLabel txt_nome;
     private javax.swing.JLabel txt_preco;

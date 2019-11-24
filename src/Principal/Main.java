@@ -17,7 +17,8 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Principal frame = new Principal();
+        //Principal frame = new Principal();
+        Produto_view frame = new Produto_view();
         frame.setVisible(true);
     }
     

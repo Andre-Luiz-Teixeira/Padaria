@@ -12,14 +12,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author André Teixeira
  */
-public class Pesquisa_Cliente_View extends javax.swing.JFrame {
+public class Cliente_Pesquisa_View extends javax.swing.JFrame {
 
     Cliente_ctrl controle = new Cliente_ctrl();
 
     /**
      * Creates new form Pesquisa_Cliente_View
      */
-    public Pesquisa_Cliente_View() {
+    public Cliente_Pesquisa_View() {
         initComponents();
     }
 
@@ -184,20 +184,21 @@ public class Pesquisa_Cliente_View extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Pesquisa_Cliente_View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Cliente_Pesquisa_View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Pesquisa_Cliente_View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Cliente_Pesquisa_View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Pesquisa_Cliente_View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Cliente_Pesquisa_View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Pesquisa_Cliente_View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Cliente_Pesquisa_View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Pesquisa_Cliente_View().setVisible(true);
+                new Cliente_Pesquisa_View().setVisible(true);
             }
         });
     }
