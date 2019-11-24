@@ -77,6 +77,7 @@ public class Vendedor_dao {
             pst.setInt(1, Id);
 
             ResultSet Resultado = pst.executeQuery();
+            Resultado.next();
 
             vendedor.setId(Resultado.getInt("vendedor_id"));
             vendedor.setNome(Resultado.getString("vendedor_nome"));
@@ -112,20 +113,79 @@ public class Vendedor_dao {
         return ListaVendedor;
     }
 
+    public ArrayList<Vendedor_mdl> tudo(String campo, String pesquisa) {
+        ArrayList<Vendedor_mdl> ListaVendedor = new ArrayList<>();
+
+        switch (campo) {
+            case "0":
+                sql = "select vendedor_id, vendedor_nome, vendedor_sexo, vendedor_idade from vendedor where vendedor_id like ?";
+                break;
+            case "1":
+                sql = "select vendedor_id, vendedor_nome, vendedor_sexo, vendedor_idade from vendedor where vendedor_nome like ?";
+                break;
+            case "2":
+                sql = "select vendedor_id, vendedor_nome, vendedor_sexo, vendedor_idade from vendedor where vendedor_sexo like ?";
+                break;
+            case "3":
+                sql = "select vendedor_id, vendedor_nome, vendedor_sexo, vendedor_idade from vendedor where vendedor_idade like ?";
+                break;
+        }
+
+        try {
+            pst = conexao.prepareStatement(sql);
+            pst.setString(1, pesquisa);
+            ResultSet Resultado = pst.executeQuery();
+
+            while (Resultado.next()) {
+                Vendedor_mdl Vendedor = new Vendedor_mdl();
+
+                Vendedor.setId(Resultado.getInt("vendedor_id"));
+                Vendedor.setNome(Resultado.getString("vendedor_nome"));
+                Vendedor.setSexo(Resultado.getString("vendedor_sexo"));
+                Vendedor.setIdade(Resultado.getInt("vendedor_idade"));
+                
+                ListaVendedor.add(Vendedor);
+            }
+        } catch (SQLException ex) {
+            System.err.println("Erro ao recupera todos objeto do banco: " + ex.getMessage());;
+        }
+        return ListaVendedor;
+    }
+
     public Vendedor_mdl ultimo() {
-        sql = "select vendedor_id, vendedor_nome, vendedor_sexo, vendedor_idade from vendedor where id = (select  MAX(vendedor_id) from vendedor) ";
+        sql = "select vendedor_id, vendedor_nome, vendedor_sexo, vendedor_idade from vendedor where vendedor_id = (select  MAX(vendedor_id) as vendedor_id from vendedor) ";
         Vendedor_mdl vendedor = new Vendedor_mdl();
 
         try {
             pst = conexao.prepareStatement(sql);
             ResultSet Resultado = pst.executeQuery();
+            Resultado.next();
 
             vendedor.setId(Resultado.getInt("vendedor_id"));
             vendedor.setNome(Resultado.getString("vendedor_nome"));
             vendedor.setSexo(Resultado.getString("vendedor_sexo"));
             vendedor.setIdade(Resultado.getInt("vendedor_idade"));
         } catch (SQLException ex) {
-            System.err.println("Erro ão recupera objeto do banco: " + ex.getMessage());
+            System.err.println("Erro ao recupera objeto do banco: " + ex.getMessage());
+        }
+        return vendedor;
+    }
+
+    public Vendedor_mdl primeiro() {
+        sql = "select vendedor_id, vendedor_nome, vendedor_sexo, vendedor_idade from vendedor where vendedor_id = (select  MIN(vendedor_id) as vendedor_id from vendedor) ";
+        Vendedor_mdl vendedor = new Vendedor_mdl();
+
+        try {
+            pst = conexao.prepareStatement(sql);
+            ResultSet Resultado = pst.executeQuery();
+            Resultado.next();
+
+            vendedor.setId(Resultado.getInt("vendedor_id"));
+            vendedor.setNome(Resultado.getString("vendedor_nome"));
+            vendedor.setSexo(Resultado.getString("vendedor_sexo"));
+            vendedor.setIdade(Resultado.getInt("vendedor_idade"));
+        } catch (SQLException ex) {
+            System.err.println("Erro ao recupera objeto do banco: " + ex.getMessage());
         }
         return vendedor;
     }

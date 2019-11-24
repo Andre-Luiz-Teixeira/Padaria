@@ -66,8 +66,43 @@ public class Vendedor_ctrl {
         }
         return matriz;
     }
+    
+    public String[][] recuperarTodos(String campo, String pesquisa) {
+        ListaVendedor = Dao.tudo(campo, pesquisa);
+
+        String[][] matriz = new String[ListaVendedor.size()][4];
+
+        for (int i = 0; i < ListaVendedor.size(); i++) {
+            matriz[i][0] = String.valueOf(ListaVendedor.get(i).getId());
+            matriz[i][1] = ListaVendedor.get(i).getNome();
+            matriz[i][2] = ListaVendedor.get(i).getSexo();
+            matriz[i][3] = String.valueOf(ListaVendedor.get(i).getIdade());
+        }
+        return matriz;
+    }
 
     public void excluir(int id) {
         Dao.remove(id);
+    }
+    
+    public String[] recuperaUltimo() {
+        Model = Dao.ultimo();
+
+        vetorVendedor[0] = String.valueOf(Model.getId());
+        vetorVendedor[1] = Model.getNome();
+        vetorVendedor[2] = Model.getSexo();
+        vetorVendedor[3] = String.valueOf(Model.getIdade());
+
+        return vetorVendedor;
+    }
+
+    public String[] recuperaPrimeiro() {
+        Model = Dao.primeiro();
+
+        vetorVendedor[0] = String.valueOf(Model.getId());
+        vetorVendedor[1] = Model.getNome();
+        vetorVendedor[2] = Model.getSexo();
+
+        return vetorVendedor;
     }
 }

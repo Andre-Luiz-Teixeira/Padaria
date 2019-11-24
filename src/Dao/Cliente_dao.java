@@ -126,18 +126,14 @@ public class Cliente_dao {
                 break;
         }
         
-        
-        
         try {
             pst = conexao.prepareStatement(sql);
-            
             pst.setString(1, pesquisa);
-            
             ResultSet Resultado = pst.executeQuery();
             
             while (Resultado.next()){
                 Cliente_mdl cliente = new Cliente_mdl();
-
+                
                 cliente.setId(Resultado.getInt("cliente_id"));
                 cliente.setNome(Resultado.getString("cliente_nome"));
                 cliente.setSexo(Resultado.getString("cliente_sexo"));
@@ -147,7 +143,6 @@ public class Cliente_dao {
         } catch (SQLException ex) {
             System.err.println("Erro ao recupera todos objeto do banco: " + ex.getMessage());;
         }
-
         return ListaCliente;
     }
 
