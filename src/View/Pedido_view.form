@@ -23,71 +23,77 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jScrollPane1" pref="0" max="32767" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="pn_produtos" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="txt_compra" min="-2" pref="100" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="vlr_compra" min="-2" pref="144" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="bt_finalizar" pref="100" max="32767" attributes="0"/>
-                                  <Component id="bt_adicionar" pref="100" max="32767" attributes="0"/>
-                                  <Component id="bt_cancelar" alignment="0" pref="100" max="32767" attributes="0"/>
-                                  <Component id="jButton1" alignment="0" pref="100" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="pn_produtos" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txt_vendedor" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txt_cliente" alignment="0" min="-2" pref="46" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="cb_vendedor" max="32767" attributes="0"/>
-                                  <Component id="cb_cliente" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="txt_pedido" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="bt_novo" min="-2" pref="78" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="bt_excluir" min="-2" pref="78" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                                      <Component id="vlr_pedido" min="-2" pref="166" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <Component id="txt_compra" min="-2" pref="100" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="vlr_compra" min="-2" pref="144" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="bt_finalizar" pref="100" max="32767" attributes="0"/>
+                          <Component id="bt_adicionar" pref="100" max="32767" attributes="0"/>
+                          <Component id="bt_cancelar" alignment="0" pref="100" max="32767" attributes="0"/>
+                          <Component id="bt_excluirpod" alignment="0" pref="100" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="txt_vendedor" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_cliente" alignment="0" min="-2" pref="46" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="cb_vendedor" max="32767" attributes="0"/>
+                          <Component id="cb_cliente" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="jButton2" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="txt_pedido" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="vlr_pedido" min="-2" pref="172" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="bt_novo" min="-2" pref="78" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="bt_excluirped" min="-2" pref="78" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="bt_cancelaped" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace type="separate" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="bt_primeiro" alignment="1" min="-2" pref="50" max="-2" attributes="0"/>
+                          <Component id="bt_voltar" alignment="1" min="-2" pref="50" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="bt_avanca" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
+                          <Component id="bt_ultimo" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="txt_pedido" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="vlr_pedido" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -95,12 +101,25 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="bt_novo" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="bt_excluir" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="bt_excluirped" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="bt_cancelaped" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Component id="jPanel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="bt_voltar" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                          <Component id="bt_avanca" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="bt_primeiro" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="bt_ultimo" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="20" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="txt_vendedor" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cb_vendedor" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -111,27 +130,27 @@
                   <Component id="cb_cliente" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="pn_produtos" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="txt_compra" alignment="0" min="-2" pref="23" max="-2" attributes="0"/>
-                          <Component id="vlr_compra" alignment="0" min="-2" pref="23" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txt_compra" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                          <Component id="vlr_compra" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <Component id="bt_adicionar" min="-2" pref="30" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="bt_cancelar" min="-2" pref="30" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="bt_excluirpod" min="-2" pref="30" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="bt_finalizar" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="125" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="135" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -144,16 +163,26 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="vlr_pedido">
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="vlr_pedidoFocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bt_novo">
       <Properties>
         <Property name="text" type="java.lang.String" value="Novo"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bt_novoMouseClicked"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="bt_excluir">
+    <Component class="javax.swing.JToggleButton" name="bt_excluirped">
       <Properties>
         <Property name="text" type="java.lang.String" value="Excluir"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bt_excluirpedMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="txt_vendedor">
       <Properties>
@@ -167,9 +196,12 @@
     </Component>
     <Component class="javax.swing.JComboBox" name="cb_vendedor">
       <Properties>
+        <Property name="maximumRowCount" type="int" value="30"/>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="0"/>
         </Property>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Object&gt;"/>
@@ -180,6 +212,7 @@
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="0"/>
         </Property>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -197,8 +230,8 @@
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="4" rowCount="0">
                 <Column editable="false" title="PRODUTO" type="java.lang.Object"/>
+                <Column editable="false" title="QTD" type="java.lang.Double"/>
                 <Column editable="false" title="VLR UNITA." type="java.lang.Double"/>
-                <Column editable="false" title="QTD" type="java.lang.Integer"/>
                 <Column editable="false" title="TOTAL" type="java.lang.Double"/>
               </Table>
             </Property>
@@ -206,11 +239,6 @@
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="10" resizable="false">
                   <Title/>
                   <Editor/>
                   <Renderer/>
@@ -225,15 +253,25 @@
                   <Editor/>
                   <Renderer/>
                 </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="10" resizable="false">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
               </TableColumnModel>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Cursor Padr&#xe3;o"/>
             </Property>
+            <Property name="enabled" type="boolean" value="false"/>
             <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbl_itensMouseClicked"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tbl_itensKeyPressed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -251,36 +289,29 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="txt_cod" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="txt_produto" min="-2" pref="170" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="vlr_cod" alignment="0" max="32767" attributes="0"/>
-                              <Component id="vlr_qtd" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txt_qtd" alignment="0" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="txt_unitario" max="32767" attributes="0"/>
-                                      <Component id="vlr_unitario" max="32767" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="vlr_total" max="32767" attributes="0"/>
-                                      <Component id="txt_total" min="-2" pref="68" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Component id="vlr_produto" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
+                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="vlr_codigo" alignment="0" max="32767" attributes="0"/>
+                      <Component id="vlr_qtd" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txt_qtd" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txt_cod" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="txt_produto" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="txt_unitario" max="32767" attributes="0"/>
+                              <Component id="vlr_unitario" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="vlr_total" max="32767" attributes="0"/>
+                              <Component id="txt_total" min="-2" pref="68" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Component id="vlr_produto" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -293,7 +324,7 @@
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="vlr_cod" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="vlr_codigo" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="vlr_produto" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -342,31 +373,64 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="vlr_qtd">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+          <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="vlr_qtdFocusLost"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="vlr_total">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="vlr_unitario">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="vlr_cod">
+        <Component class="javax.swing.JTextField" name="vlr_codigo">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+          <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="vlr_codigoFocusLost"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="vlr_produto">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
     <Component class="javax.swing.JButton" name="bt_cancelar">
       <Properties>
         <Property name="text" type="java.lang.String" value="CANCELAR"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bt_cancelarMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bt_adicionar">
       <Properties>
         <Property name="text" type="java.lang.String" value="ADICIONAR"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bt_adicionarMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bt_finalizar">
       <Properties>
         <Property name="text" type="java.lang.String" value="FINALIZAR"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bt_finalizarMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="txt_compra">
       <Properties>
@@ -374,72 +438,64 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="vlr_compra">
-    </Component>
-    <Container class="javax.swing.JPanel" name="jPanel1">
-
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="bt_primeiro" alignment="1" min="-2" pref="50" max="-2" attributes="0"/>
-                      <Component id="bt_voltar" alignment="1" min="-2" pref="50" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="bt_avanca" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
-                      <Component id="bt_ultimo" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="bt_voltar" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                      <Component id="bt_avanca" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="bt_primeiro" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="bt_ultimo" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="32767" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-      </Layout>
-      <SubComponents>
-        <Component class="javax.swing.JButton" name="bt_voltar">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="&lt;"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="bt_primeiro">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="&lt;&lt;"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="bt_avanca">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="&gt;"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="bt_ultimo">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="&gt;&gt;"/>
-          </Properties>
-        </Component>
-      </SubComponents>
-    </Container>
-    <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Excluir"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="bt_excluirpod">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="EXCLUIR"/>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bt_excluirpodMouseClicked"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Pesquisar"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="bt_voltar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&lt;"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bt_voltarMouseClicked"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="bt_primeiro">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&lt;&lt;"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bt_primeiroMouseClicked"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="bt_ultimo">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&gt;&gt;"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bt_ultimoMouseClicked"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="bt_avanca">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&gt;"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bt_avancaMouseClicked"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="bt_cancelaped">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cancela"/>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bt_cancelapedMouseClicked"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

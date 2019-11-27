@@ -70,7 +70,7 @@ public class Cliente_ctrl {
         for (int i = 0; i < ListaCliente.size(); i++) {
             matriz[i][0] = String.valueOf(ListaCliente.get(i).getId());
             matriz[i][1] = ListaCliente.get(i).getNome();
-            matriz[i][3] = ListaCliente.get(i).getSexo();
+            matriz[i][2] = ListaCliente.get(i).getSexo();
         }
         return matriz;
     }

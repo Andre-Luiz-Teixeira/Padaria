@@ -14,16 +14,15 @@ import java.util.ArrayList;
  * @author André Teixeira
  */
 public class Pedido_ctrl {
-
     Pedido_mdl Model = new Pedido_mdl();
     Pedido_dao Dao = new Pedido_dao();
-    String[] vetorPedido = new String[3];
+    String[] vetorPedido = new String[4];
     ArrayList<Pedido_mdl> ListaPedido = new ArrayList<>();
 
     public void salvar(String[] dados) {
         Model.setPedido_id(Integer.parseInt(dados[0]));
-        Model.setVendedor_id(Integer.parseInt(dados[1]));
-        Model.setCliente_id(Integer.parseInt(dados[2]));
+        Model.setPedido_vendedor(dados[1]);
+        Model.setPedido_cliente(dados[2]);
         Model.setPedido_total(Double.parseDouble(dados[3]));
 
         if (Model.getPedido_id() == 0) {
@@ -37,8 +36,8 @@ public class Pedido_ctrl {
         Model = Dao.selecionar(id);
 
         vetorPedido[0] = String.valueOf(Model.getPedido_id());
-        vetorPedido[1] = String.valueOf(Model.getVendedor_id());
-        vetorPedido[2] = String.valueOf(Model.getCliente_id());
+        vetorPedido[1] = Model.getPedido_vendedor();
+        vetorPedido[2] = Model.getPedido_cliente();
         vetorPedido[3] = String.valueOf(Model.getPedido_total());
 
         return vetorPedido;
@@ -48,8 +47,8 @@ public class Pedido_ctrl {
         Model = Dao.ultimo();
 
         vetorPedido[0] = String.valueOf(Model.getPedido_id());
-        vetorPedido[1] = String.valueOf(Model.getVendedor_id());
-        vetorPedido[2] = String.valueOf(Model.getCliente_id());
+        vetorPedido[1] = Model.getPedido_vendedor();
+        vetorPedido[2] = Model.getPedido_cliente();
         vetorPedido[3] = String.valueOf(Model.getPedido_total());
 
         return vetorPedido;
@@ -59,8 +58,8 @@ public class Pedido_ctrl {
         Model = Dao.primeiro();
 
         vetorPedido[0] = String.valueOf(Model.getPedido_id());
-        vetorPedido[1] = String.valueOf(Model.getVendedor_id());
-        vetorPedido[2] = String.valueOf(Model.getCliente_id());
+        vetorPedido[1] = Model.getPedido_vendedor();
+        vetorPedido[2] = Model.getPedido_cliente();
         vetorPedido[3] = String.valueOf(Model.getPedido_total());
 
         return vetorPedido;
@@ -69,18 +68,36 @@ public class Pedido_ctrl {
     public String[][] recuperarTodos() {
         ListaPedido = Dao.tudo();
 
-        String[][] matriz = new String[ListaPedido.size()][3];
+        String[][] matriz = new String[ListaPedido.size()][4];
 
         for (int i = 0; i < ListaPedido.size(); i++) {
-            matriz[i][0] = String.valueOf(Model.getPedido_id());
-            matriz[i][1] = String.valueOf(Model.getVendedor_id());
-            matriz[i][2] = String.valueOf(Model.getCliente_id());
-            matriz[i][3] = String.valueOf(Model.getPedido_total());
+            matriz[i][0] = String.valueOf(ListaPedido.get(i).getPedido_id());
+            matriz[i][1] = ListaPedido.get(i).getPedido_vendedor();
+            matriz[i][2] = ListaPedido.get(i).getPedido_cliente();
+            matriz[i][3] = String.valueOf(ListaPedido.get(i).getPedido_total());
         }
         return matriz;
     }
 
     public void excluir(int id) {
         Dao.remove(id);
+    }
+    
+    public String[][] recuperarTodos(String campo, String pesquisa) {
+        ListaPedido = Dao.tudo(campo, pesquisa);
+
+        String[][] matriz = new String[ListaPedido.size()][4];
+
+        for (int i = 0; i < ListaPedido.size(); i++) {
+            matriz[i][0] = String.valueOf(ListaPedido.get(i).getPedido_id());
+            matriz[i][1] = ListaPedido.get(i).getPedido_vendedor();
+            matriz[i][2] = ListaPedido.get(i).getPedido_cliente();
+            matriz[i][3] = String.valueOf(ListaPedido.get(i).getPedido_total());
+        }
+        return matriz;
+    }
+
+    public Pedido_ctrl salvar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

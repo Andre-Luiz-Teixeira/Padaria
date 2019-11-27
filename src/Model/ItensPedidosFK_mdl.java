@@ -9,7 +9,7 @@ package Model;
  *
  * @author André Teixeira
  */
-public class ItensPedidos_mdl {
+public class ItensPedidosFK_mdl {
 
     private int itens_id;
     private int pedido_id;

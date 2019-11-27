@@ -5,20 +5,20 @@
  */
 package Control;
 
-import Dao.Itenspedido_dao;
-import Model.ItensPedidos_mdl;
+import Dao.ItenspedidoFK_dao;
+import Model.ItensPedidosFK_mdl;
 import java.util.ArrayList;
 
 /**
  *
  * @author André Teixeira
  */
-public class ItensPedido_ctrl {
+public class ItensPedidoFK_ctrl {
 
-    ItensPedidos_mdl Model = new ItensPedidos_mdl();
-    Itenspedido_dao Dao = new Itenspedido_dao();
+    ItensPedidosFK_mdl Model = new ItensPedidosFK_mdl();
+    ItenspedidoFK_dao Dao = new ItenspedidoFK_dao();
     String[] vetorPedido = new String[3];
-    ArrayList<ItensPedidos_mdl> ListaPedido = new ArrayList<>();
+    ArrayList<ItensPedidosFK_mdl> ListaPedido = new ArrayList<>();
 
     public void salvar(String[] dados) {
         Model.setItens_id(Integer.parseInt(dados[0]));

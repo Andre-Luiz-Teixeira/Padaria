@@ -5,7 +5,7 @@
  */
 package Dao;
 
-import Model.ItensPedidos_mdl;
+import Model.ItensPedidosFK_mdl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,14 +16,14 @@ import java.util.ArrayList;
  *
  * @author André Teixeira
  */
-public class Itenspedido_dao {
+public class ItenspedidoFK_dao {
 
     // variaveis usadas em todas as clases
     Connection conexao = FabricaConexao.GeraConexao(); // Gera conexao com o banco
     String sql = "";// recebe o comando no sql
     PreparedStatement pst;
 
-    public void inserir(ItensPedidos_mdl item) {
+    public void inserir(ItensPedidosFK_mdl item) {
         sql = "insert into itenspedidos(pedido_id, produto_id, itens_qtd, itens_valor) values (?, ?, ?, ?)";
 
         try {
@@ -39,7 +39,7 @@ public class Itenspedido_dao {
         }
     }
 
-    public void update(ItensPedidos_mdl item) {
+    public void update(ItensPedidosFK_mdl item) {
         sql = "update itenspedidos set pedido_id = ? , produto_id = ? , itens_qtd = ? , itens_valor = ?  where itens_id = ? ";
 
         try {
@@ -69,8 +69,8 @@ public class Itenspedido_dao {
         }
     }
 
-    public ItensPedidos_mdl selecionar(int Id) {
-        ItensPedidos_mdl item = new ItensPedidos_mdl();
+    public ItensPedidosFK_mdl selecionar(int Id) {
+        ItensPedidosFK_mdl item = new ItensPedidosFK_mdl();
         sql = "select itens_id, pedido_id, produto_id, itens_qtd, itens_valor from itenspedidos where itens_id = ?";
 
         try {
@@ -93,8 +93,8 @@ public class Itenspedido_dao {
         return item;
     }
 
-    public ArrayList<ItensPedidos_mdl> tudo() {
-        ArrayList<ItensPedidos_mdl> ListaItem = new ArrayList<>();
+    public ArrayList<ItensPedidosFK_mdl> tudo() {
+        ArrayList<ItensPedidosFK_mdl> ListaItem = new ArrayList<>();
         sql = "select itens_id, pedido_id, produto_id, itens_qtd, itens_valor from itenspedidos";
 
         try {
@@ -102,7 +102,7 @@ public class Itenspedido_dao {
             ResultSet resultado = pst.executeQuery();
 
             while (resultado.next()) {
-                ItensPedidos_mdl item = new ItensPedidos_mdl();
+                ItensPedidosFK_mdl item = new ItensPedidosFK_mdl();
 
                 item.setItens_id(resultado.getInt("itens_id"));
                 item.setPedido_id(resultado.getInt("pedido_id"));
@@ -119,8 +119,8 @@ public class Itenspedido_dao {
         return ListaItem;
     }
 
-    public ItensPedidos_mdl ultimo() {
-        ItensPedidos_mdl item = new ItensPedidos_mdl();
+    public ItensPedidosFK_mdl ultimo() {
+        ItensPedidosFK_mdl item = new ItensPedidosFK_mdl();
         sql = "select itens_id, pedido_id, produto_id, itens_qtd, itens_valor from itenspedidos where itens_id = (select  MAX(itens_id) as itens_id from itenspedidos)";
 
         try {
@@ -141,8 +141,8 @@ public class Itenspedido_dao {
         return item;
     }
 
-    public ItensPedidos_mdl primeiro() {
-        ItensPedidos_mdl item = new ItensPedidos_mdl();
+    public ItensPedidosFK_mdl primeiro() {
+        ItensPedidosFK_mdl item = new ItensPedidosFK_mdl();
         sql = "select itens_id, pedido_id, produto_id, itens_qtd, itens_valor from itenspedidos where itens_id = (select  MIN(itens_id) as itens_id from itenspedidos)";
 
         try {

@@ -5,7 +5,6 @@
  */
 package Dao;
 
-import Model.Cliente_mdl;
 import Model.Pedido_mdl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,17 +18,18 @@ import java.util.ArrayList;
  */
 public class Pedido_dao {
 
+    // variaveis usadas em todas as clases
     Connection conexao = FabricaConexao.GeraConexao(); // Gera conexao com o banco
     String sql = "";// recebe o comando no sql
     PreparedStatement pst;
 
     public void inserir(Pedido_mdl Pedido) {
-        sql = "insert into pedido(vendedor_id, cliente_id, pedido_total) values (?, ?, ?)";
+        sql = "insert into pedido(pedido_vendedor, pedido_cliente, pedido_total) values (?, ?, ?)";
 
         try {
             pst = conexao.prepareStatement(sql);
-            pst.setInt(1, Pedido.getVendedor_id());
-            pst.setInt(2, Pedido.getCliente_id());
+            pst.setString(1, Pedido.getPedido_vendedor());
+            pst.setString(2, Pedido.getPedido_cliente());
             pst.setDouble(3, Pedido.getPedido_total());
 
             pst.executeUpdate();
@@ -39,12 +39,12 @@ public class Pedido_dao {
     }
 
     public void update(Pedido_mdl Pedido) {
-        sql = "update pedido set vendedor_id = ? , cliente_id = ? , pedido_total = ? where Pedido_id = ? ";
+        sql = "update pedido set pedido_vendedor = ?, pedido_cliente = ?, pedido_total = ? where pedido_id = ? ";
 
         try {
             pst = conexao.prepareStatement(sql);
-            pst.setInt(1, Pedido.getVendedor_id());
-            pst.setInt(2, Pedido.getCliente_id());
+            pst.setString(1, Pedido.getPedido_vendedor());
+            pst.setString(2, Pedido.getPedido_cliente());
             pst.setDouble(3, Pedido.getPedido_total());
             pst.setInt(4, Pedido.getPedido_id());
 
@@ -55,7 +55,7 @@ public class Pedido_dao {
     }
 
     public void remove(int Id) {
-        sql = "delete from pedido where Pedido_id = ?";
+        sql = "delete from pedido where pedido_id = ?";
 
         try {
             pst = conexao.prepareStatement(sql);
@@ -68,45 +68,85 @@ public class Pedido_dao {
     }
 
     public Pedido_mdl selecionar(int Id) {
-        Pedido_mdl Pedido = new Pedido_mdl();
-        sql = "select Pedido_id, vendedor_id, cliente_id, pedido_total from pedido where Pedido_id = ?";
+        Pedido_mdl pedido = new Pedido_mdl();
+        sql = "select pedido_id, pedido_vendedor, pedido_cliente, pedido_total from pedido where pedido_id = ?";
 
         try {
             pst = conexao.prepareStatement(sql);
             pst.setInt(1, Id);
 
-            ResultSet Resultado = pst.executeQuery();
-            Resultado.next();
+            ResultSet resultado = pst.executeQuery();
+            resultado.next();
 
-            Pedido.setPedido_id(Resultado.getInt("Pedido_id"));
-            Pedido.setVendedor_id(Resultado.getInt("vendedor_id"));
-            Pedido.setCliente_id(Resultado.getInt("cliente_id"));
-            Pedido.setPedido_total(Resultado.getDouble("pedido_total"));
+            pedido.setPedido_id(resultado.getInt("pedido_id"));
+            pedido.setPedido_vendedor(resultado.getString("pedido_vendedor"));
+            pedido.setPedido_cliente(resultado.getString("pedido_cliente"));
+            pedido.setPedido_total(resultado.getDouble("pedido_total"));
 
         } catch (SQLException ex) {
             System.err.println("Erro ao recupera objeto do banco: " + ex.getMessage());
         }
 
-        return Pedido;
+        return pedido;
     }
 
     public ArrayList<Pedido_mdl> tudo() {
         ArrayList<Pedido_mdl> ListaPedido = new ArrayList<>();
-        sql = "select Pedido_id, vendedor_id, cliente_id, pedido_total from pedido";
+        sql = "select pedido_id, pedido_vendedor, pedido_cliente, pedido_total from pedido";
 
         try {
             pst = conexao.prepareStatement(sql);
             ResultSet Resultado = pst.executeQuery();
 
             while (Resultado.next()) {
-                Pedido_mdl Pedido = new Pedido_mdl();
+                Pedido_mdl pedido = new Pedido_mdl();
 
-                Pedido.setPedido_id(Resultado.getInt("Pedido_id"));
-                Pedido.setVendedor_id(Resultado.getInt("vendedor_id"));
-                Pedido.setCliente_id(Resultado.getInt("cliente_id"));
-                Pedido.setPedido_total(Resultado.getDouble("pedido_total"));
+                pedido.setPedido_id(Resultado.getInt("pedido_id"));
+                pedido.setPedido_vendedor(Resultado.getString("pedido_vendedor"));
+                pedido.setPedido_cliente(Resultado.getString("pedido_cliente"));
+                pedido.setPedido_total(Resultado.getDouble("pedido_total"));
 
-                ListaPedido.add(Pedido);
+                ListaPedido.add(pedido);
+            }
+        } catch (SQLException ex) {
+            System.err.println("Erro ao recupera todos objeto do banco: " + ex.getMessage());;
+        }
+
+        return ListaPedido;
+    }
+
+    public ArrayList<Pedido_mdl> tudo(String campo, String pesquisa) {
+        ArrayList<Pedido_mdl> ListaPedido = new ArrayList<>();
+
+        switch (campo) {
+            case "0":
+                sql = "select pedido_id, pedido_vendedor, pedido_cliente, pedido_total from pedido where pedido_id like ?";
+                break;
+            case "1":
+                sql = "select pedido_id, pedido_vendedor, pedido_cliente, pedido_total from pedido where pedido_vendedor like ?";
+                break;
+            case "2":
+                sql = "select pedido_id, pedido_vendedor, pedido_cliente, pedido_total from pedido where pedido_cliente like ?";
+                break;
+            case "3":
+                sql = "select pedido_id, pedido_vendedor, pedido_cliente, pedido_total from pedido where pedido_total like ?";
+                break;
+        }
+
+        try {
+            pst = conexao.prepareStatement(sql);
+            pst.setString(1, pesquisa);
+            ResultSet Resultado = pst.executeQuery();
+
+            while (Resultado.next()) {
+                Pedido_mdl pedido = new Pedido_mdl();
+
+                pedido.setPedido_id(Resultado.getInt("pedido_id"));
+                pedido.setPedido_vendedor(Resultado.getString("pedido_vendedor"));
+                pedido.setPedido_cliente(Resultado.getString("pedido_cliente"));
+                pedido.setPedido_total(Resultado.getDouble("pedido_total"));
+
+                ListaPedido.add(pedido);
             }
         } catch (SQLException ex) {
             System.err.println("Erro ao recupera todos objeto do banco: " + ex.getMessage());;
@@ -115,44 +155,44 @@ public class Pedido_dao {
     }
 
     public Pedido_mdl ultimo() {
-        Pedido_mdl Pedido = new Pedido_mdl();
-        sql = "select Pedido_id, vendedor_id, cliente_id, pedido_total from pedido where Pedido_id = (select  MAX(Pedido_id) as Pedido_id from pedido)";
+        Pedido_mdl pedido = new Pedido_mdl();
+        sql = "select pedido_id, pedido_vendedor, pedido_cliente, pedido_total from pedido where pedido_id = (select  MAX(pedido_id) as pedido_id from pedido)";
 
         try {
             pst = conexao.prepareStatement(sql);
             ResultSet Resultado = pst.executeQuery();
             Resultado.next();
 
-            Pedido.setPedido_id(Resultado.getInt("Pedido_id"));
-            Pedido.setVendedor_id(Resultado.getInt("vendedor_id"));
-            Pedido.setCliente_id(Resultado.getInt("cliente_id"));
-            Pedido.setPedido_total(Resultado.getDouble("pedido_total"));
+            pedido.setPedido_id(Resultado.getInt("pedido_id"));
+            pedido.setPedido_vendedor(Resultado.getString("pedido_vendedor"));
+            pedido.setPedido_cliente(Resultado.getString("pedido_cliente"));
+            pedido.setPedido_total(Resultado.getDouble("pedido_total"));
 
         } catch (SQLException ex) {
             System.err.println("Erro ão recupera objeto do banco: " + ex.getMessage());
         }
 
-        return Pedido;
+        return pedido;
     }
 
     public Pedido_mdl primeiro() {
-        Pedido_mdl Pedido = new Pedido_mdl();
-        sql = "select Pedido_id, vendedor_id, cliente_id, pedido_total from pedido where Pedido_id = (select  MIN(Pedido_id) as Pedido_id from pedido)";
+        Pedido_mdl pedido = new Pedido_mdl();
+        sql = "select pedido_id, pedido_vendedor, pedido_cliente, pedido_total from pedido where pedido_id = (select  MIN(pedido_id) as pedido_id from pedido)";
 
         try {
             pst = conexao.prepareStatement(sql);
             ResultSet Resultado = pst.executeQuery();
             Resultado.next();
 
-            Pedido.setPedido_id(Resultado.getInt("Pedido_id"));
-            Pedido.setVendedor_id(Resultado.getInt("vendedor_id"));
-            Pedido.setCliente_id(Resultado.getInt("cliente_id"));
-            Pedido.setPedido_total(Resultado.getDouble("pedido_total"));
+            pedido.setPedido_id(Resultado.getInt("pedido_id"));
+            pedido.setPedido_vendedor(Resultado.getString("pedido_vendedor"));
+            pedido.setPedido_cliente(Resultado.getString("pedido_cliente"));
+            pedido.setPedido_total(Resultado.getDouble("pedido_total"));
 
         } catch (SQLException ex) {
             System.err.println("Erro ão recupera objeto do banco: " + ex.getMessage());
         }
 
-        return Pedido;
+        return pedido;
     }
 }

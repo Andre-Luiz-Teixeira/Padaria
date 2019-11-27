@@ -98,9 +98,9 @@ public class Cliente_dao {
             while (Resultado.next()) {
                 Cliente_mdl cliente = new Cliente_mdl();
 
-                cliente.setId(Resultado.getInt("id"));
-                cliente.setNome(Resultado.getString("nome"));
-                cliente.setSexo(Resultado.getString("sexo"));
+                cliente.setId(Resultado.getInt("cliente_id"));
+                cliente.setNome(Resultado.getString("cliente_nome"));
+                cliente.setSexo(Resultado.getString("cliente_sexo"));
 
                 ListaCliente.add(cliente);
             }
